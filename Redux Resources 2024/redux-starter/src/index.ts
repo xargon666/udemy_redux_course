@@ -1,3 +1,6 @@
+import store from './store'
+console.log(store.getState())
+
 /// Lodash Example
 console.log("Redux Starter Project!11!");
 

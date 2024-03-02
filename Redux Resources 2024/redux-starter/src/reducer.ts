@@ -38,3 +38,5 @@ function reducer(props: Props) {
             return state;
     }
 }
+
+export {reducer,State,Action,Props};
