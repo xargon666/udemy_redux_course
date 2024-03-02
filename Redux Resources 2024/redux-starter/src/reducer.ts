@@ -1,42 +1,37 @@
 // IMPORTS
-import {v4 as uuid} from 'uuid'
+import { v4 as uuidv4 } from "uuid";
+import {Action,State} from './Types'
+import * as actionTypes from './actionTypes'
+// Initial state with a tasks array
+const initialState: State = {
+  tasks: [],
+};
 
-// TYPES
-interface State {
-    id: string;
-    task: string;
-    completed: boolean;
+// Reducer function matching Redux signature
+export default function reducer(
+  state: State = initialState,
+  action: Action
+): State {
+  switch (action.type) {
+    case actionTypes.ADD_TASK:
+      return {
+        ...state,
+        tasks: [
+          ...state.tasks,
+          {
+            // id: uuidv4(), // Unable to tartget IDs right now with UUID, temp disabled
+            id: "1",
+            task: action.payload.task,
+            complete: false,
+          },
+        ],
+      };
+    case actionTypes.REMOVE_TASK:
+      return {
+        ...state,
+        tasks: state.tasks.filter((task) => task.id !== action.payload.id),
+      };
+    default:
+      return state;
+  }
 }
-interface Action {
-    type: string;
-    payload: State;
-}
-interface Props {
-    state: State[];
-    action: Action;
-}
-
-// FUNCTIONS
-function reducer(props: Props) {
-    const { state, action } = props;
-
-    switch (action.type) {
-        case "ADD_TASK":
-            return [
-                ...state,
-                {
-                    id: uuid(),
-                    task: action.payload.task,
-                    completed: false,
-                },
-            ];
-
-        case "REMOVE_TASK":
-            return state.filter((task) => task.id !== action.payload.id);
-
-        default:
-            return state;
-    }
-}
-
-export {reducer,State,Action,Props};
