@@ -41,7 +41,6 @@ const book: Book = {
         rating: 4.7,
     },
 };
-
 // solution with spread operator
 const book2: Book = {
     ...book,
