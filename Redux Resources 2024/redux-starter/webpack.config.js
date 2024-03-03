@@ -12,6 +12,7 @@ module.exports = {
     },
     port: 3000,
   },
+  devtool:"source-map",
   mode: "development",
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
