@@ -1,9 +1,9 @@
-import { store } from "./store";
 import { 
+    store,
     addTask, 
     removeTask, 
     completeTask 
-} from "./actions";
+} from "./store/tasks";
 
 console.log("The Redux Starter Project!!");
 
@@ -16,6 +16,3 @@ store.dispatch(completeTask("1"));
 store.dispatch(addTask("Task 2"));
 store.dispatch(removeTask("1")); // Can't tartget IDs right now with UUID, temp disabled
 unsubscribe();
-
-// NEW EXCERCISE
-// ADD NEW ACTION TO CHANGE TASK COMPLETION STATUS TO "TRUE"
