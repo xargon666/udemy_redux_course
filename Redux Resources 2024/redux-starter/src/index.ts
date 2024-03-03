@@ -15,6 +15,8 @@ const unsubscribe = store.subscribe(() => {
 store.dispatch(addTask("Do the shopping",true));
 store.dispatch(completeTask("1"));
 store.dispatch(addTask("Task 2"));
-store.dispatch(fetchTodo());
 store.dispatch(removeTask("1")); // Can't tartget IDs right now with UUID, temp disabled
+// store.dispatch(fetchTodo());
 // unsubscribe();
+
+

@@ -37,7 +37,9 @@ export const fetchTodo = () =>
         const response = await fetch(
             "https://jsonplaceholder.typicode.com/todos/1"
         );
+        if (!response.ok){ throw new Error('failed to fetch data')}
         const task = await response.json();
+        if (!task.title){ throw new Error('failed to fetch task title')}
         store.dispatch(addTask(task.title));
     };
 

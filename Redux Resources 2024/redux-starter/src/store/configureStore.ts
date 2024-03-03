@@ -1,7 +1,11 @@
-import { legacy_createStore as createStore, applyMiddleware } from "redux";
-import reducer from "./tasks"
-import { thunk } from 'redux-thunk'
+import { legacy_createStore as createStore } from "redux";
+import { devToolsEnhancer } from '@redux-devtools/extension';
+import reducer from "./tasks";
 
-const store = createStore(reducer,applyMiddleware(thunk));
+const store = createStore(
+    reducer,
+    devToolsEnhancer({trace:true}
+    )
+);
 
-export default store 
+export default store
