@@ -22,15 +22,23 @@ export default function reducer(
             // id: uuidv4(), // Unable to tartget IDs right now with UUID, temp disabled
             id: "1",
             task: action.payload.task,
-            complete: false,
+            complete: action.payload.complete || false,
           },
         ],
       };
+
     case actionTypes.REMOVE_TASK:
       return {
         ...state,
         tasks: state.tasks.filter((task) => task.id !== action.payload.id),
       };
+
+    case actionTypes.COMPLETE_TASK:
+      return {
+        ...state,
+        tasks: state.tasks.map((task) => task.id === action.payload.id ? {...task, complete: true} : task),
+      };
+
     default:
       return state;
   }
