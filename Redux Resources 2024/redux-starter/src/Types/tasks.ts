@@ -1,13 +1,11 @@
-export interface Action {
-    type: string;
-    payload: any; // Can be detailed further based on actual payload structure
-  }
-  
-  // Define the State shape
-  export interface State {
-    tasks: {
-      id: string;
-      task: string;
-      complete: boolean;
-    }[];
-  }
+export interface Task {
+  id: string;
+  task: string;
+  complete: boolean;
+};
+
+export interface Slice {
+  tasks: Task[],
+  loading: boolean,
+  error: string|null,
+}
