@@ -1,6 +1,36 @@
 {
-  "users": [
-  { "id": "1", "text": "Leanne Graham", "views": "Bret" },
-  { "id": "2", "text": "Ervin Howell", "views": "Antonette" }
-]
+    "employees": [
+        {
+            "id": "074fb9b8-f8c2-42ac-b9bb-e5b63bf5872f",
+            "name": "Leanne Graham",
+            "username": "Bret"
+        },
+        {
+            "id": "b8c62c99-3460-4542-9220-ea5783bf3084",
+            "name": "Ervin Howell",
+            "username": "Antonette"
+        },
+        {
+            "id": "668876eb-d478-4ca5-8d3e-b1f8a1c337de",
+            "name": "Ervin Howell",
+            "username": "Antonette"
+        }
+    ],
+    "tasks": [
+      {
+        "id": "f038b2b9-9eb5-458c-ad0b-bd758da611e0",
+        "task": "delectus aut autem",
+        "complete": true
+      },
+      {
+        "id": "c8174e5e-b58d-41f3-ba18-f8de5a04bd6b",
+        "task": "quis ut nam facilis et officia qui",
+        "complete": false
+      },
+      {
+        "id": "3fd89ac0-6daa-4e88-80f9-3d88a4886948",
+        "task": "fugiat veniam minus",
+        "complete": false
+      }
+    ]
 }
