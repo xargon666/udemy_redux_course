@@ -8,11 +8,11 @@ app.use(express.json());
 app.use(cors());
 
 let tasks = [
-    { id: 1, task: "Start creating Redux application", completed: true },
-    { id: 2, task: "Design redux store", completed: true },
-    { id: 3, task: "Define all actions list", completed: false },
-    { id: 4, task: "Create reducer", completed: false },
-    { id: 5, task: "Create store using reducer", completed: false },
+    { id: "3de4601d-3d79-4ce4-84aa-4e74e7e97e7e", task: "Start creating Redux application", completed: true },
+    { id: "34eea2fa-2079-4c7b-8708-f57520f0e8bd", task: "Design redux store", completed: true },
+    { id: "9f173992-557e-429b-9e3a-74664e5711bd", task: "Define all actions list", completed: false },
+    { id: "8bb7ad70-9094-4e19-ac02-02a4347bb738", task: "Create reducer", completed: false },
+    { id: "e5537b23-bacc-496b-8027-c17a0de593fd", task: "Create store using reducer", completed: false },
 ];
 
 // Get all tasks
