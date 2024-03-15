@@ -1,7 +1,9 @@
+import {v4 as uuid} from 'uuid'
+
 const express = require("express");
 const cors = require("cors");
 const app = express();
-
+const PORT = 5000
 app.use(express.json());
 app.use(cors());
 
@@ -20,7 +22,7 @@ app.get("/api/tasks", (req, res) => {
 
 // Add new Task
 app.post("/api/tasks", (req, res) => {
-    const newTask = { id: tasks.length + 1, ...req.body, completed: false };
+    const newTask = { id: uuid(), ...req.body, completed: false };
     tasks.push(newTask);
 
     console.log(tasks);
@@ -45,4 +47,4 @@ app.delete("/api/tasks/:id", (req, res) => {
     res.json({ id });
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
