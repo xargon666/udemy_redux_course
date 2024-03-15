@@ -2,27 +2,38 @@
 // IMPORTS
 import { v4 as uuidv4 } from "uuid";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Employee, Slice } from "../Types/employees";
 // **************************************************************************
 // SLICE
+const initialState: Slice = {
+    employees: [],
+    loading: false,
+    error: null,
+};
 const employeeSlice = createSlice({
     name: "employee",
-    initialState: [],
+    initialState,
     reducers: {
-        addEmployee: (state, action: PayloadAction<{id:string,name:string}>) => {
-            state.push({
-                id: uuidv4(),
-                name: action.payload.name
+        getEmployees: (state,action: PayloadAction<{employees: Employee[]}>)=>{
+            state.employees = action.payload.employees
+        },
+        addEmployee: (state, action: PayloadAction<{id:string,name:string,username:string}>) => {
+            const newID = uuidv4()
+            state.employees.push({
+                id: newID,
+                name: action.payload.name,
+                username: action.payload.username || `${action.payload.name} ${newID}`
             });
         },
         removeEmployee: (state, action: PayloadAction<{id:string}>) => {
-            const index = state.findIndex(
+            const index = state.employees.findIndex(
                 (emp) => emp.id === action.payload.id
             );
-            state.splice(index, 1);
+            state.employees.splice(index, 1);
         },
         },
 });
 // **************************************************************************
 // EXPORTS
-export const { addEmployee, removeEmployee } = employeeSlice.actions;
+export const { addEmployee, removeEmployee, getEmployees } = employeeSlice.actions;
 export default employeeSlice.reducer;
