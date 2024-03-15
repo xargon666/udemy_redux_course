@@ -3,6 +3,7 @@ import { addTask, removeTask, completeTask, editTask } from "./store/tasks";
 import { addEmployee, removeEmployee } from "./store/employees";
 import axios from "axios";
 import { getTasks } from "./store/tasks";
+import { getEmployees } from "./store/employees";
 
 console.log("The Redux Starter Project!!");
 
@@ -11,12 +12,11 @@ const unsubscribe = store.subscribe(() => {
 });
 
 // TASK BLOCK
-const API_TASKS_URL = "http://localhost:5000/api/tasks";
+const API_TASKS_URL = "http://localhost:5000/tasks";
 const gettingTasks = async () => {
     // calling api
     const response = await axios.get(API_TASKS_URL);
-    console.log("AXIOS!", response);
-
+    
     // dispatch action
     try {
         store.dispatch(getTasks({ tasks: response.data }));
@@ -28,18 +28,22 @@ const gettingTasks = async () => {
     }
 };
 gettingTasks();
-// store.dispatch({type:"SHOW_ERROR",payload:{error:"aAHHHH!!!"}})
 
-// store.dispatch(addTask({task:"Task 1"}));
-// store.dispatch(addTask({task:"Task 2"}));
-// store.dispatch(editTask({
-//     id:"1",
-//     task:"Go Red Socks!"
-// }));
-// // store.dispatch(removeTask({id:"1"}))
+// EMPLOYEES BLOCK
+const API_EMPLOYEES_URL = "http://localhost:5000/employees";
+const gettingEmployees = async () => {
+    // calling api
+    const response = await axios.get(API_EMPLOYEES_URL);
+    
+    // dispatch action
+    try {
+        store.dispatch(getEmployees({ employees: response.data }));
+    } catch (error) {
+        store.dispatch({
+            type: "SHOW_ERROR",
+            payload: { error: error.message },
+        });
+    }
+};
+gettingEmployees();
 
-// // EMPLOYEE BLOCK
-// store.dispatch(addEmployee({name:"Dave"}))
-// store.dispatch(removeEmployee({id:'1'}))
-
-// // unsubscribe();
